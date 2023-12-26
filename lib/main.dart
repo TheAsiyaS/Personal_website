@@ -4,31 +4,28 @@ void main() {
   runApp(const MyApp());
 }
 
+//flutter run -d chrome --web-renderer html
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  //
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
       home: const HomePage(),
     );
   }
 }
-
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Project:Personal website'),
-      ),
-    );
+    return const Placeholder();
   }
 }
+//https://img.freepik.com/premium-photo/website-header-portrait-gorgeous-smiling-young-female-using-laptop-computer-workplace-side_386167-6922.jpg
