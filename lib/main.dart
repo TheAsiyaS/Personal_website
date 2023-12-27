@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:personal_website/Common/Colors&Size.dart';
 import 'package:personal_website/Presentation/Widget/ConatinerWidget.dart';
@@ -21,13 +22,14 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
         useMaterial3: true,
       ),
-      home: const Home(),
+      home: Home(),
     );
   }
 }
 
 class Home extends StatelessWidget {
-  const Home({super.key});
+  final ScrollController _scrollController = ScrollController();
+  Home({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -63,56 +65,122 @@ class Home extends StatelessWidget {
         ),
         actions: [
           IconButton(
-              onPressed: () {},
+              onPressed: () {
+                print(size.height);
+              },
               icon: const Icon(
                 Icons.hub_outlined,
                 color: kTollens,
               ))
         ],
       ),
-      body: ContainerWidget(
-          height: size.height,
-          width: size.width,
-          boxdecoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage('asset/HomeImage.jpg'), fit: BoxFit.cover)),
-          widget: Container(
-            color: const Color.fromARGB(136, 0, 0, 0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  'ASIYA . SHAJAHAN . B',
-                  style: GoogleFonts.ptSerif(),
-                ),
-                Divider(
-                  color: kTollens,
-                  endIndent: size.width / 2.5,
-                  indent: size.width /  2.5,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 30),
-                  child: Text(
-                    'Dedicated Flutter developer crafting digital solutions through elegant and efficient code.',
-                    style: GoogleFonts.libreBaskerville(
-                        fontWeight: FontWeight.w800, fontSize: 30),
+      body: SingleChildScrollView(
+        controller: _scrollController,
+        child: Column(
+          children: [
+            ContainerWidget(
+                height: size.height / 1,
+                width: size.width,
+                boxdecoration: const BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage('asset/HomeImage.jpg'),
+                        fit: BoxFit.cover)),
+                widget: Container(
+                  color: const Color.fromARGB(136, 0, 0, 0),
+                  child: Stack(
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'ASIYA . SHAJAHAN . B',
+                            style: GoogleFonts.ptSerif(),
+                          ),
+                          Divider(
+                            color: kTollens,
+                            endIndent: size.width / 2.5,
+                            indent: size.width / 2.5,
+                          ),
+                          SizedBox(
+                            height: size.width <= 1500
+                                ? size.height / 3
+                                : size.height / 5,
+                            width: size.width <= 1500
+                                ? size.width / 1.5
+                                : size.width / 2,
+                            child: Center(
+                              child: Text(
+                                'Dedicated Flutter developer crafting digital solutions through elegant and efficient code.',
+                                maxLines: 6,
+                                style: GoogleFonts.libreBaskerville(
+                                    fontWeight: FontWeight.w800, fontSize: 30),
+                              ),
+                            ),
+                          ),
+                          IconButton(
+                              onPressed: () {},
+                              icon: const Icon(
+                                Icons.keyboard_double_arrow_down,
+                                size: 30,
+                                color: kTollens,
+                              )),
+                          Text(
+                            'Scroll Down',
+                            style: GoogleFonts.ptSerif(color: kTollens),
+                          ),
+                        ],
+                      ),
+                      size.width <= 1500
+                          ? Positioned(
+                              bottom: 0,
+                              top: 0,
+                              left: size.width / 2,
+                              child: const Column(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  ContainerWidget(
+                                      height: 150,
+                                      width: 250,
+                                      widget: h10,
+                                      boxdecoration: BoxDecoration(
+                                          image: DecorationImage(
+                                              image:
+                                                  AssetImage('asset/Sign.png'),
+                                              fit: BoxFit.cover)))
+                                ],
+                              ),
+                            )
+                          : Positioned(
+                              bottom: 0,
+                              top: 0,
+                              left: size.width / 1.4,
+                              child: const Column(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  ContainerWidget(
+                                      height: 400,
+                                      width: 400,
+                                      widget: h10,
+                                      boxdecoration: BoxDecoration(
+                                          image: DecorationImage(
+                                              image: AssetImage(
+                                                  'asset/mainlogo.png'),
+                                              fit: BoxFit.cover)))
+                                ],
+                              ),
+                            )
+                    ],
                   ),
-                ),
-                 IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.keyboard_double_arrow_down,
-                size: 30,
-                color: kTollens,
-              )),
-               Text(
-                  'Scroll Down',
-                  style: GoogleFonts.ptSerif(color: kTollens),
-                ),
-              ],
-            ),
-          )),
+                )),
+            Container(
+              height: 100,
+              width: size.width,
+            )
+          ],
+        ),
+      ),
     );
   }
 }
