@@ -174,14 +174,109 @@ class Home extends StatelessWidget {
                     ],
                   ),
                 )),
-            Container(
-              height: 100,
+            ContainerWidget(
+              height: size.height / 1,
               width: size.width,
+              boxdecoration: const BoxDecoration(),
+              widget: Column(
+                children: [
+                  h20,
+                  Text(
+                    'A brief professional overview'.toUpperCase(),
+                    style: const TextStyle(letterSpacing: 3, fontSize: 10),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: RichText(
+                      text: TextSpan(
+                        style: GoogleFonts.libreBaskerville(
+                          fontWeight: FontWeight.w800,
+                          fontSize: 30,
+                          color: kwhite, // Default color for the text
+                        ),
+                        children: const [
+                          TextSpan(
+                            text: 'To Know ',
+                          ),
+                          TextSpan(
+                            text: 'Me',
+                            style: TextStyle(
+                              color: kTollens, // Color for the "Me" text
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      SizedBox(
+                        height: size.height / 3,
+                        width: size.width / 3,
+                        child: const Text(
+                            'Versatile mobile application developer with a specialization in Flutter, adept at merging technology with elegant UI/UX design. Proficient in multiple programming languages, including Java, C, C++, Flutter, Dart, and JavaScript. Extensive experience utilizing Firebase for efficient backend solutions',
+                            maxLines: 5,
+                            style: TextStyle(
+                                overflow: TextOverflow.ellipsis,
+                                height: 2,
+                                fontWeight: FontWeight.w400,
+                                color: kgrey)),
+                      ),
+                      SizedBox(
+                        height: size.height / 3,
+                        width: size.width / 3,
+                        child: const Text(
+                            'Skilled in Android Studio, with a passion for crafting seamless and visually appealing user experiences. Committed to innovation and staying at the forefront of emerging technologies, I bring a comprehensive skill set to transform ideas into high-quality, user-centric mobile applications.',
+                            maxLines: 5,
+                            style: TextStyle(
+                                overflow: TextOverflow.ellipsis,
+                                height: 2,
+                                fontWeight: FontWeight.w400,
+                                color: kgrey)),
+                      )
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Column(
+                        children: [
+                          RotatedBox(
+                              quarterTurns: 1,
+                              child: Text(
+                                'All right reserved @Asiya',
+                                style: TextStyle(
+                                    letterSpacing: 3,
+                                    fontSize: 10,
+                                    color: kTollens),
+                              )),
+                          h10,
+                          SizedBox(
+                            height: 100,
+                            child: VerticalDivider(
+                              color: kTollens,
+                              thickness: 1.3,
+                            ),
+                          )
+                        ],
+                      ),
+                      ContainerWidget(
+                          height: size.height / 2,
+                          width: size.width / 1.5,
+                          widget: h10,
+                          boxdecoration: const BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage('asset/videoimage.jpg'),
+                                  fit: BoxFit.cover))),
+                    ],
+                  )
+                ],
+              ),
             )
           ],
         ),
       ),
     );
   }
-}
-//https://img.freepik.com/premium-photo/website-header-portrait-gorgeous-smiling-young-female-using-laptop-computer-workplace-side_386167-6922.jpg
+} 
