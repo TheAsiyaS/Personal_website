@@ -34,6 +34,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final topbarItems = ['Home', 'Works', 'Blog', 'Page', 'Contact me'];
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -54,7 +55,7 @@ class Home extends StatelessWidget {
               itemBuilder: (context, index) {
                 return Center(
                     child: Text(
-                  'Home',
+                  topbarItems[index],
                   style: GoogleFonts.playfairDisplay(),
                 ));
               },
@@ -83,10 +84,11 @@ class Home extends StatelessWidget {
                 width: size.width,
                 boxdecoration: const BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage('asset/HomeImage.jpg'),
+                        image:
+                            AssetImage('asset/office with bridge colour.png'),
                         fit: BoxFit.cover)),
                 widget: Container(
-                  color: const Color.fromARGB(136, 0, 0, 0),
+                  color: const Color.fromARGB(146, 0, 0, 0),
                   child: Stack(
                     children: [
                       Column(
@@ -118,7 +120,13 @@ class Home extends StatelessWidget {
                             ),
                           ),
                           IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                _scrollController.animateTo(
+                                  _scrollController.position.maxScrollExtent,
+                                  duration: const Duration(milliseconds: 500),
+                                  curve: Curves.easeInOut,
+                                );
+                              },
                               icon: const Icon(
                                 Icons.keyboard_double_arrow_down,
                                 size: 30,
@@ -175,7 +183,7 @@ class Home extends StatelessWidget {
                   ),
                 )),
             ContainerWidget(
-              height: size.height / 1,
+              height: size.height / 2,
               width: size.width,
               boxdecoration: const BoxDecoration(),
               widget: Column(
@@ -212,7 +220,7 @@ class Home extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       SizedBox(
-                        height: size.height / 3,
+                        height: size.height / 4,
                         width: size.width / 3,
                         child: const Text(
                             'Versatile mobile application developer with a specialization in Flutter, adept at merging technology with elegant UI/UX design. Proficient in multiple programming languages, including Java, C, C++, Flutter, Dart, and JavaScript. Extensive experience utilizing Firebase for efficient backend solutions',
@@ -224,7 +232,7 @@ class Home extends StatelessWidget {
                                 color: kgrey)),
                       ),
                       SizedBox(
-                        height: size.height / 3,
+                        height: size.height / 4,
                         width: size.width / 3,
                         child: const Text(
                             'Skilled in Android Studio, with a passion for crafting seamless and visually appealing user experiences. Committed to innovation and staying at the forefront of emerging technologies, I bring a comprehensive skill set to transform ideas into high-quality, user-centric mobile applications.',
@@ -237,46 +245,50 @@ class Home extends StatelessWidget {
                       )
                     ],
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Column(
-                        children: [
-                          RotatedBox(
-                              quarterTurns: 1,
-                              child: Text(
-                                'All right reserved @Asiya',
-                                style: TextStyle(
-                                    letterSpacing: 3,
-                                    fontSize: 10,
-                                    color: kTollens),
-                              )),
-                          h10,
-                          SizedBox(
-                            height: 100,
-                            child: VerticalDivider(
-                              color: kTollens,
-                              thickness: 1.3,
-                            ),
-                          )
-                        ],
-                      ),
-                      ContainerWidget(
-                          height: size.height / 2,
-                          width: size.width / 1.5,
-                          widget: h10,
-                          boxdecoration: const BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage('asset/videoimage.jpg'),
-                                  fit: BoxFit.cover))),
-                    ],
-                  )
                 ],
               ),
-            )
+            ),
+            ContainerWidget(
+                height: size.height / 1.5,
+                width: size.width,
+                widget: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Column(
+                      children: [
+                        RotatedBox(
+                            quarterTurns: 1,
+                            child: Text(
+                              'All right reserved @Asiya',
+                              style: TextStyle(
+                                  letterSpacing: 3,
+                                  fontSize: 10,
+                                  color: kTollens),
+                            )),
+                        h10,
+                        SizedBox(
+                          height: 100,
+                          child: VerticalDivider(
+                            color: kTollens,
+                            thickness: 1.3,
+                          ),
+                        )
+                      ],
+                    ),
+                    ContainerWidget(
+                        height: size.height / 1.5,
+                        width: size.width / 1.5,
+                        widget: h10,
+                        boxdecoration: const BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage('asset/mordern office.png'),
+                                fit: BoxFit.cover))),
+                  ],
+                ),
+                boxdecoration: const BoxDecoration())
           ],
         ),
       ),
     );
   }
-} 
+}
