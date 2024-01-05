@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:personal_website/Common/Colors&Size.dart';
 import 'package:personal_website/Presentation/Home/Home.dart';
+import 'package:personal_website/Presentation/Work/Works.dart';
 
 
 void main() {
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
         useMaterial3: true,
       ),
-      home: Home(),
+      home: Works(),
     );
   }
 }
