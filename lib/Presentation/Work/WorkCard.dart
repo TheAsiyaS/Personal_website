@@ -18,7 +18,8 @@ class WorkCard extends StatelessWidget {
                 ? Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SizedBox(
+                   
+                      SizedBox(  
                         height: size.height / 8,
                         width: size.width / 1.8,
                         child: Text('Spotify Modified version'.toUpperCase(),
@@ -61,6 +62,7 @@ class WorkCard extends StatelessWidget {
                 : Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      
                       SizedBox(
                         height: size.height / 8,
                         width: size.width / 1.8,

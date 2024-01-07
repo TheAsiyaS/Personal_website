@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: kblack,
-        brightness: Brightness.dark,
+        brightness: Brightness.dark, 
         useMaterial3: true,
       ),
       home: Works(),
