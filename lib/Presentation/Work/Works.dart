@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:personal_website/Common/Colors&Size.dart';
 import 'package:personal_website/Presentation/Widget/Buttons.dart';
+import 'package:personal_website/Presentation/Widget/ConatinerWidget.dart';
 import 'package:personal_website/Presentation/Work/WorkCard.dart';
 
 class Works extends StatelessWidget {
@@ -18,10 +19,9 @@ class Works extends StatelessWidget {
       body: SingleChildScrollView(
           controller: _scrollController,
           child: Column(
-         
             children: [
               SizedBox(
-                height: size.height / 1,    
+                height: size.height / 1.1,
                 width: size.width,
                 child: ListView.separated(
                     itemBuilder: (context, index) {
@@ -39,6 +39,7 @@ class Works extends StatelessWidget {
                 height: size.height / 1,
                 width: size.width,
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     SizedBox(
                       height: size.height / 15,
@@ -90,12 +91,11 @@ class Works extends StatelessWidget {
                       'Enclosed are supplementary noteworthy projects, meticulously crafted with dedication and precision. I trust they garner your esteemed appreciation.',
                       style: TextStyle(color: kgrey),
                     ),
-                    Container(
-                      color: kTollens,
-                      height: size.height/2.5, 
-                      width:size.width/2, 
-                      child: ListView(
-                        children:[ CarouselSlider(
+                    SizedBox(
+                      height: size.height / 2.5,
+                      width: size.width / 2,
+                      child: ListView(children: [
+                        CarouselSlider(
                           items: [
                             //1st Image of Slider
                             Container(
@@ -109,7 +109,7 @@ class Works extends StatelessWidget {
                                 ),
                               ),
                             ),
-                                            
+
                             //2nd Image of Slider
                             Container(
                               margin: const EdgeInsets.all(6.0),
@@ -122,7 +122,7 @@ class Works extends StatelessWidget {
                                 ),
                               ),
                             ),
-                                            
+
                             //3rd Image of Slider
                             Container(
                               margin: const EdgeInsets.all(6.0),
@@ -135,7 +135,7 @@ class Works extends StatelessWidget {
                                 ),
                               ),
                             ),
-                                            
+
                             //4th Image of Slider
                             Container(
                               margin: const EdgeInsets.all(6.0),
@@ -148,7 +148,7 @@ class Works extends StatelessWidget {
                                 ),
                               ),
                             ),
-                                            
+
                             //5th Image of Slider
                             Container(
                               margin: const EdgeInsets.all(6.0),
@@ -162,13 +162,13 @@ class Works extends StatelessWidget {
                               ),
                             ),
                           ],
-                                            
+
                           //Slider Container properties
                           options: CarouselOptions(
-                            height: size.height/2.5,
+                            height: size.height / 2.5,
                             enlargeCenterPage: true,
                             autoPlay: true,
-                            aspectRatio: 16 / 9,
+                            aspectRatio: 2.0,
                             autoPlayCurve: Curves.fastOutSlowIn,
                             enableInfiniteScroll: true,
                             autoPlayAnimationDuration:
@@ -176,8 +176,51 @@ class Works extends StatelessWidget {
                             viewportFraction: 0.8,
                           ),
                         ),
-                  ]),
+                      ]),
                     ),
+                    Text(
+                      'WANT TO SEE MORE CLICK BELOW',
+                      style: GoogleFonts.libreBaskerville(
+                        fontWeight: FontWeight.w800,
+                        fontSize: 30,
+                      ),
+                    ),
+                    SizedBox(
+                      height: size.height / 15,
+                      width: 180,
+                      child: Elevatedbutton(
+                          onpressed: () {},
+                          widget: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              const Text(
+                                'GITHUB',
+                                style: TextStyle(
+                                    letterSpacing: 3,
+                                    fontSize: 10,
+                                    color: kwhite),
+                              ),
+                              ContainerWidget(
+                                  height: 30,
+                                  width: 30,
+                                  widget: h10,
+                                  boxdecoration: BoxDecoration(
+                                      color: kwhite,
+                                      borderRadius: BorderRadius.circular(50),
+                                      image: const DecorationImage(
+                                          image: AssetImage(
+                                              'asset/Githublogo.png'))))
+                            ],
+                          ),
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: ktransparent,
+                              shape: const RoundedRectangleBorder(
+                                side: BorderSide(
+                                    color: kTollens,
+                                    width: 2), // Border width and color
+                              ))),
+                    ),
+                    //asset/Githublogo.png
                   ],
                 ),
               )

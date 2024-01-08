@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:personal_website/Common/Colors&Size.dart';
 import 'package:personal_website/Presentation/Widget/ConatinerWidget.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:personal_website/Presentation/Work/Works.dart';
+
 class Home extends StatelessWidget {
   final ScrollController _scrollController = ScrollController();
   Home({super.key});
@@ -29,9 +31,17 @@ class Home extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 return Center(
-                    child: Text(
-                  topbarItems[index],
-                  style: GoogleFonts.playfairDisplay(),
+                    child: GestureDetector(
+                  onTap: () {
+                    if (index == 1) {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => Works()));
+                    }
+                  },
+                  child: Text(
+                    topbarItems[index],
+                    style: GoogleFonts.playfairDisplay(),
+                  ),
                 ));
               },
               separatorBuilder: (context, index) {
