@@ -15,6 +15,12 @@ class Works extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final leftorRight = [false, true, false];
+    final List<String> imageUrls = [
+      "https://officebanao.com/wp-content/uploads/2023/09/4-4-1024x576.jpg",
+      "https://static.wixstatic.com/media/bdf5a9_82c9bec502e94864a1e64fad77fb9533.jpg/v1/fill/w_1866,h_1050,al_c/bdf5a9_82c9bec502e94864a1e64fad77fb9533.jpg",
+      "https://i.imgur.com/lMNcqL2.jpg",
+      "https://i.imgur.com/sMZBVm7.jpg",
+    ];
     return Scaffold(
       body: SingleChildScrollView(
           controller: _scrollController,
@@ -91,92 +97,40 @@ class Works extends StatelessWidget {
                       'Enclosed are supplementary noteworthy projects, meticulously crafted with dedication and precision. I trust they garner your esteemed appreciation.',
                       style: TextStyle(color: kgrey),
                     ),
-                    SizedBox(
-                      height: size.height / 2.5,
-                      width: size.width / 2,
-                      child: ListView(children: [
-                        CarouselSlider(
-                          items: [
-                            //1st Image of Slider
-                            Container(
-                              margin: const EdgeInsets.all(6.0),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8.0),
-                                image: const DecorationImage(
-                                  image: NetworkImage(
-                                      "https://archello.s3.eu-central-1.amazonaws.com/images/2018/02/21/ModernLuxuryCEOOfficeInteriorDesign1.1519240126.0188.jpg"),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-
-                            //2nd Image of Slider
-                            Container(
-                              margin: const EdgeInsets.all(6.0),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8.0),
-                                image: const DecorationImage(
-                                  image: NetworkImage(
-                                      "https://officebanao.com/wp-content/uploads/2023/09/4-4-1024x576.jpg"),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-
-                            //3rd Image of Slider
-                            Container(
-                              margin: const EdgeInsets.all(6.0),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8.0),
-                                image: const DecorationImage(
-                                  image: NetworkImage(
-                                      "https://static.wixstatic.com/media/bdf5a9_82c9bec502e94864a1e64fad77fb9533.jpg/v1/fill/w_1866,h_1050,al_c/bdf5a9_82c9bec502e94864a1e64fad77fb9533.jpg"),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-
-                            //4th Image of Slider
-                            Container(
-                              margin: const EdgeInsets.all(6.0),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8.0),
-                                image: const DecorationImage(
-                                  image: NetworkImage(
-                                      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc4sFdCzkGAqRYxYchjZTNO8vOXkIjAkXb-f0NWaWbrW735yQ_G9L-VAfXIVlB5Csy2oo&usqp=CAU"),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-
-                            //5th Image of Slider
-                            Container(
-                              margin: const EdgeInsets.all(6.0),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8.0),
-                                image: const DecorationImage(
-                                  image: NetworkImage(
-                                      "https://static1.bigstockphoto.com/8/3/4/large1500/438747719.jpg"),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                          ],
-
-                          //Slider Container properties
-                          options: CarouselOptions(
-                            height: size.height / 2.5,
-                            enlargeCenterPage: true,
-                            autoPlay: true,
-                            aspectRatio: 2.0,
-                            autoPlayCurve: Curves.fastOutSlowIn,
-                            enableInfiniteScroll: true,
-                            autoPlayAnimationDuration:
-                                const Duration(milliseconds: 800),
-                            viewportFraction: 0.8,
-                          ),
+                    Container(
+                      height: size.height/2,
+                      width: size.width/1.7,
+                      child: CarouselSlider.builder(
+                        itemCount: imageUrls.length,
+                        options: CarouselOptions(
+                          height: size.height/2,
+                          autoPlay: true,
+                          viewportFraction: 0.8,
+                          aspectRatio: 2.0,
+                          initialPage: 0,
+                          enableInfiniteScroll: true,
+                          reverse: false,
+                          autoPlayInterval: Duration(seconds: 3),
+                          autoPlayAnimationDuration:
+                              Duration(milliseconds: 800),
+                          autoPlayCurve: Curves.fastOutSlowIn,
+                          enlargeCenterPage: true,
+                          scrollDirection: Axis.horizontal,
                         ),
-                      ]),
+                        itemBuilder: (BuildContext context, int itemIndex,
+                            int pageViewIndex) {
+                          return Container(
+                            margin: EdgeInsets.all(6.0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8.0),
+                              image: DecorationImage(
+                                image: NetworkImage(imageUrls[itemIndex]),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          );
+                        },
+                      ),
                     ),
                     Text(
                       'WANT TO SEE MORE CLICK BELOW',
@@ -215,12 +169,9 @@ class Works extends StatelessWidget {
                           style: ElevatedButton.styleFrom(
                               backgroundColor: ktransparent,
                               shape: const RoundedRectangleBorder(
-                                side: BorderSide(
-                                    color: kTollens,
-                                    width: 2), // Border width and color
+                                side: BorderSide(color: kTollens, width: 2),
                               ))),
                     ),
-                    //asset/Githublogo.png
                   ],
                 ),
               )

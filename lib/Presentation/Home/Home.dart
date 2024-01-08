@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:personal_website/Common/Colors&Size.dart';
+import 'package:personal_website/Presentation/About/About.dart';
 import 'package:personal_website/Presentation/Widget/ConatinerWidget.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:personal_website/Presentation/Work/Works.dart';
@@ -36,6 +37,9 @@ class Home extends StatelessWidget {
                     if (index == 1) {
                       Navigator.of(context).push(
                           MaterialPageRoute(builder: (context) => Works()));
+                    }else  if (index == 2) {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => const AboutMe()));
                     }
                   },
                   child: Text(
