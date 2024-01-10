@@ -5,6 +5,7 @@ const kwhite = Colors.white;
 const kgrey = Colors.grey;
 const kblueGrey = Colors.blueGrey;
 const kTollens = Color.fromARGB(255, 158, 144, 123);
+const kTollensdark = Color.fromARGB(255, 79, 67, 44);
 const ktransparent = Colors.transparent;
 const kred = Colors.red;
 const w2 = SizedBox(

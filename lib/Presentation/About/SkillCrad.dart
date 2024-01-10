@@ -15,7 +15,7 @@ class SkillCard extends StatelessWidget {
   final double height;
   final double elevation;
   final String language;
-  final String mainpercentage;
+  final int mainpercentage;
   final String subpercentage1;
   final String subpercentage2;
 
@@ -31,32 +31,31 @@ class SkillCard extends StatelessWidget {
           gradient: const LinearGradient(
             colors: [Color.fromARGB(255, 87, 78, 69), kblack],
           ),
-          borderRadius:
-              BorderRadius.circular(15.0),
+          borderRadius: BorderRadius.circular(15.0),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              mainpercentage,
+              language,
               style: const TextStyle(letterSpacing: 5, fontSize: 13),
             ),
             const SizedBox(height: 10),
             CircularSliderWidget(
-              percentage: 75,
+              percentage: mainpercentage,
               size: 100.0,
             ),
-                   h10,
+            h10,
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Column(
                   children: [
                     Text(subpercentage1),
-                           h5,
+                    h5,
                     const Text(
                       'Last week',
-                      style: TextStyle(color:kgrey),
+                      style: TextStyle(color: kgrey),
                     )
                   ],
                 ),
@@ -64,9 +63,8 @@ class SkillCard extends StatelessWidget {
                 Column(
                   children: [
                     Text(subpercentage2),
-                   h5,
-                    const Text('Last week',
-                        style: TextStyle(color:kgrey))
+                    h5,
+                    const Text('Last Month', style: TextStyle(color: kgrey))
                   ],
                 ),
               ],
@@ -97,8 +95,8 @@ class _CircularSliderWidgetState extends State<CircularSliderWidget> {
         CustomPaint(
           painter: CircularSliderPainter(
             percentage: widget.percentage,
-            sliderColor: const Color.fromARGB(255, 79, 67, 44),
-            baseColor: Colors.transparent,
+            sliderColor: kTollensdark,
+            baseColor: ktransparent,
           ),
           size: Size(widget.size, widget.size),
         ),
